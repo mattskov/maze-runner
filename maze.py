@@ -1,6 +1,7 @@
-from random import seed, randrange
-from time   import sleep
-from cell   import Cell
+from random   import seed, randrange
+from time     import sleep
+from cell     import Cell
+from display  import Point, Line
 
 
 class Maze():
@@ -125,7 +126,19 @@ class Maze():
 				cell.visited = False
 
 	def __solve(self, i=0, j=0, from_cell=None):
+		line_color = 'red'
+
+		if from_cell is None:
+			start_cell_center = self.cells[0][0].get_center()
+			start_edge_point = Point(0, start_cell_center.y)
+			start_line = Line(start_edge_point, start_cell_center)
+			self.__window.draw_line(start_line, line_color)
+
 		if i == self.__num_rows-1 and j == self.__cells_per_row-1:
+			end_cell_center = self.cells[self.__num_rows-1][self.__cells_per_row-1].get_center()
+			end_edge_point = Point(self.__window.width, end_cell_center.y)
+			end_line = Line(end_cell_center, end_edge_point)
+			self.__window.draw_line(end_line, line_color)
 			print('Solved!')
 			return True
 
