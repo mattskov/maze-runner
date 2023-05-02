@@ -53,7 +53,7 @@ class Maze():
 		if self.__window is None:
 			return
 		self.__window.refresh()
-		sleep(1/25)
+		#sleep(1/25)
 
 	def __make_start_and_finish(self):
 		start_cell = self.cells[0][0]
@@ -126,7 +126,7 @@ class Maze():
 				cell.visited = False
 
 	def __solve(self, i=0, j=0, from_cell=None):
-		line_color = 'red'
+		line_color = 'limegreen'
 
 		if from_cell is None:
 			start_cell_center = self.cells[0][0].get_center()
@@ -139,7 +139,7 @@ class Maze():
 			end_edge_point = Point(self.__window.width, end_cell_center.y)
 			end_line = Line(end_cell_center, end_edge_point)
 			self.__window.draw_line(end_line, line_color)
-			print('Solved!')
+			print('\nSolved!')
 			return True
 
 		self.__animate()

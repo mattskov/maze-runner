@@ -27,7 +27,7 @@ class Cell():
 		if self.__window is not None:
 			self.draw_walls()
 
-	def draw_walls(self, border_color='white', bg_color='black'):
+	def draw_walls(self, border_color='grey', bg_color='black'):
 		if self.__window is None:
 			return
 
@@ -68,6 +68,6 @@ class Cell():
 	def draw_move(self, to_cell, undo=False):
 		this_center = self.get_center()
 		to_center = to_cell.get_center()
-		color = 'grey' if undo else 'red'
+		color = 'darkred' if undo else 'limegreen'
 		move_line = Line(this_center, to_center)
 		self.__window.draw_line(move_line, color)
